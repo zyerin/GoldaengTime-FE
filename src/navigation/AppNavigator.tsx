@@ -2,12 +2,13 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import LoginScreen from "../screens/Login";
-import SignupScreen from "../screens/Signup";
+import SignupScreen from "../screens/SignUpScreen";
 import HomeScreen from "../screens/HomeScreen";
 import MyPetScreen from "../screens/MyPetScreen";
 import PetRegistrationScreen from "../screens/PetRegistrationScreen";
 import PetInputScreen from "../screens/PetInputScreen";
 import KakaoMapScreen from "../screens/KakaoMapScreen";
+import PostLostPet from '../screens/PostLostPet';
 
 export type PetData = {
   이름: string;
@@ -30,6 +31,7 @@ export type RootStackParamList = {
     onSave: (value: string) => void;
   };
   KakaoMap: { onAddressSelect: (address: string) => void };
+  PostLostPet: undefined;
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -37,7 +39,7 @@ const Stack = createStackNavigator<RootStackParamList>();
 const AppNavigator = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName="Login">
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Signup" component={SignupScreen} />
         <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
@@ -45,6 +47,8 @@ const AppNavigator = () => {
         <Stack.Screen name="PetRegistration" component={PetRegistrationScreen} options={{ headerShown: false }} />
         <Stack.Screen name="PetInput" component={PetInputScreen} options={{ headerShown: false }} />
         <Stack.Screen name="KakaoMap" component={KakaoMapScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="PostLostPet" component={PostLostPet}/>
+
       </Stack.Navigator>
     </NavigationContainer>
   );
